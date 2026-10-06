@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tender Package Builder</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs"
+        type="module"></script>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <h1 id="appTitle">Tender Package Builder</h1>
+        <p id="appSubtitle">
+            Prepare, check and combine tender documents
+        </p>
+    </div>
+
+    <button id="languageBtn">বাংলা</button>
+
+</header>
+
+
+<main class="container">
+
+    <section class="card">
+
+        <div class="section-title">
+            <div>
+                <h2>1. Tender Requirements</h2>
+                <p>Upload the requirements.json file</p>
+            </div>
+        </div>
+
+        <label class="upload-box">
+
+            <input
+                type="file"
+                id="requirementsFile"
+                accept=".json,application/json"
+                hidden
+            >
+
+            <span class="upload-icon">📋</span>
+
+            <strong>Choose requirements.json</strong>
+
+            <small>
+                Tender details and required documents
+            </small>
+
+        </label>
+
+        <div id="tenderInfo" class="tender-info hidden"></div>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div>
+                <h2>2. Upload PDF Documents</h2>
+                <p>
+                    Upload up to 30 PDF files, maximum 50 MB total
+                </p>
+            </div>
+
+            <span id="fileCounter" class="counter">
+                0 files
+            </span>
+
+        </div>
+
+
+        <label class="upload-box">
+
+            <input
+                type="file"
+                id="pdfFiles"
+                accept="application/pdf,.pdf"
+                multiple
+                hidden
+            >
+
+            <span class="upload-icon">📄</span>
+
+            <strong>Choose PDF files</strong>
+
+            <small>
+                Only PDF files are accepted
+            </small>
+
+        </label>
+
+
+        <div id="fileList" class="file-list"></div>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div>
+                <h2>3. Match Documents</h2>
+
+                <p>
+                    Match each uploaded PDF with a tender requirement
+                </p>
+            </div>
+
+        </div>
+
+
+        <div id="requirementsList">
+
+            <div class="empty-state">
+                Load requirements.json first.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-title">
+
+            <div>
+                <h2>4. Package Status</h2>
+
+                <p>
+                    Resolve all blocking problems before generating
+                </p>
+
+            </div>
+
+            <span id="statusSummary" class="status-summary">
+                No requirements loaded
+            </span>
+
+        </div>
+
+
+        <div id="statusList">
+
+            <div class="empty-state">
+                No status available yet.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="generate-section">
+
+        <div>
+
+            <h2>Ready to Generate?</h2>
+
+            <p id="generateMessage">
+                Resolve all blocking issues first.
+            </p>
+
+        </div>
+
+
+        <button
+            id="generateBtn"
+            class="generate-btn"
+            disabled
+        >
+            Generate Package
+        </button>
+
+    </section>
+
+
+    <div id="messageBox" class="message-box hidden"></div>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
